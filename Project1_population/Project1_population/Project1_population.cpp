@@ -1,20 +1,37 @@
-// Project1_population.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    int days;
+    double population, increase;
+
+    // Input validation
+    cout << "Enter starting population (min 2): ";
+    cin >> population;
+    while (population < 2) {
+        cout << "Invalid. Enter a population >= 2: ";
+        cin >> population;
+    }
+
+    cout << "Enter daily increase percentage (non-negative): ";
+    cin >> increase;
+    while (increase < 0) {
+        cout << "Invalid. Enter a non-negative value: ";
+        cin >> increase;
+    }
+
+    cout << "Enter number of days: ";
+    cin >> days;
+    while (days < 1) {
+        cout << "Invalid. Enter at least 1 day: ";
+        cin >> days;
+    }
+
+    cout << "\nPopulation Growth:\n";
+    for (int i = 1; i <= days; i++) {
+        cout << "Day " << i << ": " << population << endl;
+        population += population * (increase / 100);
+    }
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
